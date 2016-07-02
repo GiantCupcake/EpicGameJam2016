@@ -74,12 +74,25 @@ public class Manager : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, 100.0f, layerMaskTiles))
             {
                 selected.moveTo(hit.transform.position.x, hit.transform.position.z);
-
             }
         }
 
 
     }
+
+    public void HilightTiles(int x, int y,int radius)
+    {
+        HashSet<Vector2> cases = new HashSet<Vector2>();
+        //remplit le Hash
+        CheckPath(radius, x, y, cases);
+        foreach(Vector2 v in cases)
+        {
+            //on créé un gameObject Highlight sur la map aux coordonoées v
+            Vector3 location = new Vector3(v.x,0,v.y);
+            //Instantiate(SquareLight,location);
+        }
+    }
+
     public void CheckPath(int power, int x, int y, HashSet<Vector2> radius)
     {
         int[,] RockMap = GetComponent<builderScript>().RockMap;

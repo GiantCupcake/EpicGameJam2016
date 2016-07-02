@@ -29,6 +29,26 @@ public class Chateau : MonoBehaviour {
         }
     }
 
-    
+    public void createUnit()
+    {
+        Instantiate(GetComponent<Unit1ControlScript>().gameObject, transform.position, Quaternion.identity);
+    }
+
+    public void upgradeVit()
+    {
+        bonus_mouvement++;
+    }
+    public void upgradeDmg()
+    {
+        bonus_dommage++;
+    }
+
+    public void upgradeIncome()
+    {
+        bonus_income++;
+    }
+
+
+
 
 }

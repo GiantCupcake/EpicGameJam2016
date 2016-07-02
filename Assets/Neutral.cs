@@ -1,20 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Neutral : MonoBehaviour {
+public class Building : MonoBehaviour {
 
-    // Use this for initialization
     //Position sur la grille
-    int posx;
-    int posy;
-    Vector3 position;
-    int Id_player_owner;
+    public int posx;
+    public int posy;
+    //Qui ? Neutre 0, player 1,2,...
+    public int Id_player_owner;
 
-    //Constructeur ??
-    public Neutral(int _posx, int _posy)
-    {
-
-    }
+    public GameObject building;
 
 
 	public void Start () {
@@ -26,17 +21,17 @@ public class Neutral : MonoBehaviour {
 	
 	}
 
-    public void setPos(Vector3 vec)
+    public void setPos(int x, int y)
     {
-        //On pourra le placer sur le modèle 3d avec ça.
-
+        posx = x;
+        posy = y;
     }
 
-    public void unit_arrived()
+    public void unit_arrived(int Id_player)
     {
         //get l'unité qui est sur notre tuile
         //change Id_player_owner pour le joueur qui controle cette unité
-
+        Id_player_owner = Id_player;
     }
 
     //A rendre abstract
@@ -46,7 +41,4 @@ public class Neutral : MonoBehaviour {
         int bonus = 0;
         return bonus;
     }
-
-
-
 }

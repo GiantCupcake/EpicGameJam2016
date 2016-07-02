@@ -7,14 +7,13 @@ public class builderScript : MonoBehaviour {
     GameObject GeneratorContent;
     Generatorrr mapGen;
 
-
-    public Vector3 Chateau1Location;
-    public Vector3 Chateau2Location;
-    public Vector3 Grunt1Location;
-    public Vector3 Grunt2Location;
-
     public int MapWidth;
     public int MapHeight;
+
+    Vector3 Chateau1Location;
+    Vector3 Chateau2Location;
+    public Vector3 Grunt1Location;
+    public Vector3 Grunt2Location;
 
     List<GameObject> listChateau = new List<GameObject>();
     List<GameObject> listGrunt = new List<GameObject>();
@@ -35,6 +34,9 @@ public class builderScript : MonoBehaviour {
 
     private void GenerateChateaux()
     {
+        Chateau1Location = new Vector3(MapWidth / 2,0,0);
+        Chateau2Location = new Vector3(MapWidth / 2, 0, MapHeight-1);
+
         listChateau.Add((GameObject)Instantiate(Chateau, Chateau1Location, Quaternion.identity));
         listChateau.Add((GameObject)Instantiate(Chateau, Chateau2Location, Quaternion.identity));
 

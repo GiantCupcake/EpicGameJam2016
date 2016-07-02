@@ -16,7 +16,7 @@ public class GruntScript : UnitControlScript {
 
     public override void moveTo(float x, float y)
     {
-        print("My name is : " + this.name + " and I'm going to " + x + "---" + y);
+        pathFinder((int)x, (int)y);
     }
 
     // Use this for initialization
@@ -26,6 +26,8 @@ public class GruntScript : UnitControlScript {
         maxMove = 3;
         bombTick = 3;
         remainingMoves = maxMove;
+        posX = (int)transform.position.x;
+        posY = (int)transform.position.z;
 
     }
 	
@@ -39,16 +41,24 @@ public class GruntScript : UnitControlScript {
     void pathFinder(int destX, int destY)
     {
         while (posX > destX)
+        {
             if (!MoveLeft())
                 break;
+        }
         while (posX < destX)
+        {
             if (!MoveRight())
                 break;
+        }
         while (posY < destY)
+        {
             if (!MoveDown())
                 break;
+        }
         while (posY > destY)
+        {
             if (!MoveUp())
                 break;
+        }
     }
 }

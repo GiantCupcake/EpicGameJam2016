@@ -32,11 +32,16 @@ public abstract class UnitControlScript : MonoBehaviour {
     public abstract void getWrecked();
     public abstract void dealDmg();
 
+    void bruleTripot(int x, int y)
+    {
+        transform.position = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + y);
+    }
+
     public bool MoveLeft()
     {
         if ((posX > 0) && (remainingMoves > 0))
         {
-            moveTo(-1, 0);
+            bruleTripot(-1, 0);
             posX--;
             remainingMoves--;
             return true;
@@ -49,7 +54,7 @@ public abstract class UnitControlScript : MonoBehaviour {
     {
         if ((posX < maxX - 1) && (remainingMoves > 0))
         {
-            moveTo(1, 0);
+            bruleTripot(1, 0);
             posX++;
             remainingMoves--;
             return true;
@@ -62,7 +67,7 @@ public abstract class UnitControlScript : MonoBehaviour {
     {
         if ((posY > 0) && (remainingMoves > 0))
         {
-            moveTo(0, -1);
+            bruleTripot(0, -1);
             posY--;
             remainingMoves--;
             return true;
@@ -75,7 +80,7 @@ public abstract class UnitControlScript : MonoBehaviour {
     {
         if ((posY < maxY - 1) && (remainingMoves > 0))
         {
-            moveTo(0, 1);
+            bruleTripot(0, 1);
             posY++;
             remainingMoves--;
             return true;

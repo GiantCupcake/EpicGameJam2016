@@ -34,12 +34,7 @@ public class Manager : MonoBehaviour {
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f, layerMaskTiles))
-            {
-                if (hit.collider.gameObject != null)
-                {
                     selected.moveTo(hit.transform.position.x, hit.transform.position.z);
-                }
-            }
         }
     }
 }

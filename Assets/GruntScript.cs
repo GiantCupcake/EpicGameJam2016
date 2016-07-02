@@ -1,10 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class GruntScript : UnitControlScript {
 
-	// Use this for initialization
-	void Start () {
+    public override void moveTo(float x, float y)
+    {
+        print("going to " + x + "---" + y);
+    }
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -12,4 +18,5 @@ public class GruntScript : UnitControlScript {
 	void Update () {
 	
 	}
+
 }

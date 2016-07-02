@@ -13,8 +13,5 @@ public abstract class UnitControlScript : MonoBehaviour {
 	
 	}
 
-    public void moveTo(float x, float y)
-    {
-        print("going to "+x+ "---"+y);
-    }
+    public abstract void moveTo(float x, float y);
 }

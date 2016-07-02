@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7275d3212bf7f6f45ade8f47d8647541
+guid: dc5e7ccb54780304fb32ac0b7973f223
 timeCreated: 1467419152
 licenseType: Free
 ModelImporter:
@@ -23,11 +23,10 @@ ModelImporter:
     3300002: Plots
     3300004: Porte
     3300006: Tours
-    4300000: Porte
+    4300000: base
     4300002: Plots
-    4300004: base
+    4300004: Porte
     4300006: Tours
-    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -86,7 +85,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour {
 
     List<Unit1ControlScript> listUnit = new List<Unit1ControlScript>();
-    List<Building> listBuilding = new List<Building>();
+    string name;
+    int ID;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +18,11 @@ public class Player : MonoBehaviour {
 	
 	}
 
-
+    public void Construct(string _name, int _ID)
+    {
+        name = _name;
+        ID = _ID;
+    }
 
 
 }

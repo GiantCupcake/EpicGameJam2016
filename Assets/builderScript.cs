@@ -14,6 +14,7 @@ public class builderScript : MonoBehaviour {
     public int MapWidth;
     public int MapHeight;
     public int RockDensity;
+    public int[,] RockMap;
 
     Vector3 Chateau1Location;
     Vector3 Chateau2Location;
@@ -47,8 +48,7 @@ public class builderScript : MonoBehaviour {
 
     private void GenerateRock()
     {
-
-        int[,] RockMap = new int[MapWidth, MapHeight];
+        RockMap = new int[MapWidth, MapHeight];
 
         for (int x = 4; x < MapWidth / 2; x++)
         {

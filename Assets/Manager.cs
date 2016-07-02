@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Manager : MonoBehaviour {
 
@@ -30,16 +30,32 @@ public class Manager : MonoBehaviour {
             else
                 selected = null;
         }
+        if (selected != null)
+        {
+
+        }
         if (Input.GetMouseButtonDown(1) && selected != null)
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f, layerMaskTiles))
             {
-                if (hit.collider.gameObject != null)
-                {
-                    selected.moveTo(hit.transform.position.x, hit.transform.position.z);
-                }
+                selected.moveTo(hit.transform.position.x, hit.transform.position.z);
             }
         }
+
+
+    }
+    public void CheckPath(int power, int x, int y, HashSet<Vector2> radius)
+    {
+        int[,] RockMap = GetComponent<builderScript>().RockMap;
+        if (RockMap[x, y] == 1 || power == 0)
+            return;
+
+        radius.Add(new Vector2(x, y));
+        
+        CheckPath(power - 1, x + 1, y, radius);
+        CheckPath(power - 1, x - 1, y, radius);
+        CheckPath(power - 1, x, y + 1, radius);
+        CheckPath(power - 1, x, y - 1, radius);
     }
 }

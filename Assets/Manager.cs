@@ -74,7 +74,7 @@ public class Manager : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, 100.0f, layerMaskTiles))
             {
                 selected.moveTo(hit.transform.position.x, hit.transform.position.z);
-
+                writeSelected();
             }
         }
 

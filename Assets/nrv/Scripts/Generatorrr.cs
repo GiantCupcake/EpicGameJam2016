@@ -10,6 +10,8 @@ public class Generatorrr : MonoBehaviour {
     public int width;
     public int height;
 
+    GameObject[,] map;
+
     public int getWidth()
     {
         return width;
@@ -21,8 +23,9 @@ public class Generatorrr : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
+        map = new GameObject[width,height];
         Generate();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {

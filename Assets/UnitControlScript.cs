@@ -39,7 +39,7 @@ public abstract class UnitControlScript : MonoBehaviour {
 
     public bool MoveLeft()
     {
-        if ((posX > 0) && (remainingMoves > 0))
+        if ((posX >= 0) && (remainingMoves > 0))
         {
             bruleTripot(-1, 0);
             posX--;
@@ -52,7 +52,7 @@ public abstract class UnitControlScript : MonoBehaviour {
 
     public bool MoveRight()
     {
-        if ((posX < maxX - 1) && (remainingMoves > 0))
+        if ((posX <= maxX - 1) && (remainingMoves > 0))
         {
             bruleTripot(1, 0);
             posX++;
@@ -65,7 +65,7 @@ public abstract class UnitControlScript : MonoBehaviour {
 
     public bool MoveUp()
     {
-        if ((posY > 0) && (remainingMoves > 0))
+        if ((posY >= 0) && (remainingMoves > 0))
         {
             bruleTripot(0, -1);
             posY--;
@@ -78,7 +78,7 @@ public abstract class UnitControlScript : MonoBehaviour {
 
     public bool MoveDown()
     {
-        if ((posY < maxY - 1) && (remainingMoves > 0))
+        if ((posY <= maxY - 1) && (remainingMoves > 0))
         {
             bruleTripot(0, 1);
             posY++;

@@ -14,24 +14,30 @@ public class Unit1ControlScript : MonoBehaviour {
 
     private int maxX;
     private int maxY;
+    private Rigidbody rb;
+
+    public Generatorrr mapDerp;
+
 
 	// Use this for initialization
 	void Start () {
-        object mapDerp = FindObjectOfType(typeof(GameObject));
-        maxX = mapDerp.sizeX;
-        maxY = mapDerp.sizeY;
+        rb = GetComponent<Rigidbody>();
+        maxX = mapDerp.getWidth();          //et là ça passe
+        maxY = mapDerp.getHeight();         //bisou
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    if (hp == 0)
+	    if (hp <= 0)
             Destroy(this.gameObject);
 	}
+
 
     void MoveLeft()
     {
         if ((posX > 0) && (moveLeft > 0))
         {
+            moveTo(- 1, 0);
             posX--;
             moveLeft--;
         }
@@ -41,6 +47,7 @@ public class Unit1ControlScript : MonoBehaviour {
     {
         if ((posX < maxX) && (moveLeft > 0))
         {
+            moveTo(1, 0);
             posX++;
             moveLeft--;
         }
@@ -50,6 +57,7 @@ public class Unit1ControlScript : MonoBehaviour {
     {
         if ((posY > 0) && (moveLeft > 0))
         {
+            moveTo(0, - 1);
             posY--;
             moveLeft--;
         }
@@ -59,8 +67,15 @@ public class Unit1ControlScript : MonoBehaviour {
     {
         if ((posY < maxY) && (moveLeft > 0))
         {
+            moveTo(0, 1);
             posY++;
             moveLeft--;
         }
+    }
+
+    void moveTo(int x, int y)
+    {
+        Vector3 movement = new Vector3(x, 0.0f, y);
+        rb.AddForce(movement * 1);
     }
 }

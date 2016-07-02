@@ -9,6 +9,16 @@ public class Generatorrr : MonoBehaviour {
     public GameObject CubeBleu;
     public int width;
     public int height;
+
+    public int getWidth()
+    {
+        return width;
+    }
+
+    public int getHeight()
+    {
+        return height;
+    }
 	// Use this for initialization
 	void Start () {
         Generate();

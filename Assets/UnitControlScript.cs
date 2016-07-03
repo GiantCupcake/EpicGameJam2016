@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class UnitControlScript : MonoBehaviour {
 
-    public builderScript builder;
+    public GameObject builder;
     public int maxMove;
     public int remainingMoves;
     public int hp;
@@ -11,23 +11,21 @@ public abstract class UnitControlScript : MonoBehaviour {
     public int posY;
     public int dmg;
     public int bombTick;
-    public int intox;
+    public int intox = 1;
     public bool isDetonating;
     public string owner;
-    private int maxX;
-    private int maxY;
+    public int maxX;
+    public int maxY;
 
 	// Use this for initialization
 	void Start () {
-        intox = 1;
-        maxX = builder.MapWidth;
-        maxY = builder.MapHeight;
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        
+    }
 
     public abstract void moveTo(float x, float y);
     public abstract void getWrecked();
@@ -53,7 +51,7 @@ public abstract class UnitControlScript : MonoBehaviour {
 
     public bool MoveRight()
     {
-        if ((posX <= maxX - 1) && (remainingMoves > 0))
+        if (remainingMoves > 0)
         {
             bruleTripot(1, 0);
             posX++;
@@ -79,7 +77,7 @@ public abstract class UnitControlScript : MonoBehaviour {
 
     public bool MoveDown()
     {
-        if ((posY <= maxY - 1) && (remainingMoves > 0))
+        if (remainingMoves > 0)
         {
             bruleTripot(0, 1);
             posY++;

@@ -20,7 +20,11 @@ public class GruntScript : UnitControlScript {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
+        print(builder.ToString());
+//        maxX = builder.MapWidth;
+//        maxY = builder.MapHeight;
         dmg = 1;
         hp = 1;
         maxMove = 3;
@@ -29,11 +33,10 @@ public class GruntScript : UnitControlScript {
         isDetonating = false;
         posX = (int)transform.position.x;
         posY = (int)transform.position.z;
-
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 

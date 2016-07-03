@@ -7,7 +7,9 @@ public class Manager : MonoBehaviour {
     private int layerMaskUnits;
     private int layerMaskTiles;
     private int layerMaskUi;
+    public GameObject realSelected;
     public UnitControlScript selected;
+    public ChateauScript chateauSelected;
     public Text textUnitName;
     public Text textUnitHp;
     public Text textUnitMove;
@@ -16,6 +18,7 @@ public class Manager : MonoBehaviour {
     public Text textUnitIntox;
     public GameObject selectedPanel;
     public GameObject detonateButton;
+    public GameObject castlePanel;
 
 
     // Use this for initialization
@@ -46,6 +49,9 @@ public class Manager : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         detonateButton.SetActive(false);
         selectedPanel.SetActive(false);
+        castlePanel.SetActive(false);
+        realSelected = null;
+        chateauSelected = null;
         selected = null;
     }
     void Update()
@@ -57,9 +63,19 @@ public class Manager : MonoBehaviour {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f, layerMaskUnits))
             {
-                selected = hit.collider.gameObject.GetComponent<UnitControlScript>();
-                writeSelected();
-                HilightTiles(selected.posX, selected.posY, selected.maxMove);
+                realSelected = hit.collider.gameObject;
+                //.GetComponent<UnitControlScript>();
+                if (realSelected.GetComponent<UnitControlScript>())
+                {
+                    selected = realSelected.GetComponent<UnitControlScript>();
+                    writeSelected();
+                    HilightTiles(selected.posX, selected.posY, selected.maxMove);
+                }
+                else if (realSelected.GetComponent<ChateauScript>())
+                {
+                    chateauSelected = realSelected.GetComponent<ChateauScript>();
+                    writeChateau();
+                }
             }
             else
                 StartCoroutine(clearSelected());
@@ -75,6 +91,11 @@ public class Manager : MonoBehaviour {
         }
 
 
+    }
+
+    public void writeChateau()
+    {
+        castlePanel.SetActive(true);
     }
 
     public void HilightTiles(int x, int y,int radius)

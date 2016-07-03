@@ -48,11 +48,20 @@ public class GruntScript : UnitControlScript{
         posX = (int)transform.position.x;
         posY = (int)transform.position.z;
         expl = GetComponent<ParticleSystem>();
+        if (expl == null)
+        {
+            Debug.Log("particle null");
+        }
         expl_sound = GetComponent<AudioSource>();
+        if (expl_sound == null)
+        {
+            Debug.Log("particle null");
+        }
     }
 
     // Update is called once per frame
     void Update () {
+
 	}
 
 

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour {
 
+    public GameObject SquareLight;
     public GameObject Grunt;
     private int layerMaskUnits;
     private int layerMaskTiles;
@@ -22,7 +23,7 @@ public class Manager : MonoBehaviour {
     public GameObject detonateButton;
     public GameObject castlePanel;
     int[] coords = new int[2];
-
+    List<Object> lights = new List<Object>();
 
     // Use this for initialization
     void Start () {
@@ -50,6 +51,7 @@ public class Manager : MonoBehaviour {
     IEnumerator<WaitForSeconds> clearSelected()
     {
         yield return new WaitForSeconds(0.5f);
+        ShutdownTiles();
         detonateButton.SetActive(false);
         selectedPanel.SetActive(false);
         castlePanel.SetActive(false);
@@ -72,7 +74,7 @@ public class Manager : MonoBehaviour {
                 {
                     selected = realSelected.GetComponent<UnitControlScript>();
                     writeSelected();
-                    HilightTiles(selected.posX, selected.posY, selected.maxMove);
+                    HilightTiles(selected.posX, selected.posY, selected.remainingMoves + 1);
                 }
                 else if (realSelected.GetComponent<ChateauScript>() && realSelected.GetComponent<ChateauScript>().owner == activePlayer.playerColor)
                 {
@@ -127,8 +129,17 @@ public class Manager : MonoBehaviour {
         {
             //on créé un gameObject Highlight sur la map aux coordonoées v
             Vector3 location = new Vector3(v.x,0,v.y);
-            //Instantiate(SquareLight,location);
+            lights.Add(Instantiate(SquareLight,location, new Quaternion()));
         }
+    }
+
+    public void ShutdownTiles()
+    {
+        foreach (Object light in lights)
+        {
+            Destroy(light);
+        }
+        lights.Clear();
     }
 
     public void CheckPath(int power, int x, int y, HashSet<Vector2> radius)

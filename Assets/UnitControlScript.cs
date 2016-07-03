@@ -58,7 +58,9 @@ public abstract class UnitControlScript : MonoBehaviour {
 
     public void moveTo(float x, float y)
     {
+        FindObjectOfType<Manager>().ShutdownTiles();
         pathFinder((int)x, (int)y);
+        FindObjectOfType<Manager>().HilightTiles(posX, posY, remainingMoves + 1);
     }
 
     public void getWrecked()

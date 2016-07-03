@@ -12,6 +12,7 @@ public abstract class UnitControlScript : MonoBehaviour {
     public int dmg;
     public int bombTick;
     public int intox;
+    public bool isDetonating;
     public string owner;
     private int maxX;
     private int maxY;

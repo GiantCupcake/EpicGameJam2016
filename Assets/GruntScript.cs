@@ -26,6 +26,7 @@ public class GruntScript : UnitControlScript {
         maxMove = 3;
         bombTick = 3;
         remainingMoves = maxMove;
+        isDetonating = false;
         posX = (int)transform.position.x;
         posY = (int)transform.position.z;
 

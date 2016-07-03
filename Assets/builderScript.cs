@@ -21,8 +21,8 @@ public class builderScript : MonoBehaviour {
     public Vector3 Grunt1Location;
     public Vector3 Grunt2Location;
 
-    List<GameObject> listChateau = new List<GameObject>();
-    List<GameObject> listGrunt = new List<GameObject>();
+    public List<GameObject> listChateau = new List<GameObject>();
+    public List<GameObject> listGrunt = new List<GameObject>();
 
 	// Use this for initialization
 	void Start () {

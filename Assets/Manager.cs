@@ -151,11 +151,11 @@ public class Manager : MonoBehaviour {
 
         radius.Add(new Vector2(x, y));
         //TODO : executer ca si on sort pas de la map ----- Matt : j'ai fait mais je sais pas si c'est juste, je comprends pas trop le delire de la func ... CA MARCHE YO PS: vous etes cons
-        if (x < FindObjectOfType<builderScript>().MapWidth)
+        if (x < FindObjectOfType<builderScript>().MapWidth - 1)
             CheckPath(power - 1, x + 1, y, radius);
         if (x > 0)
             CheckPath(power - 1, x - 1, y, radius);
-        if (y < FindObjectOfType<builderScript>().MapHeight)
+        if (y < FindObjectOfType<builderScript>().MapHeight - 1)
             CheckPath(power - 1, x, y + 1, radius);
         if (y > 0)
             CheckPath(power - 1, x, y - 1, radius);

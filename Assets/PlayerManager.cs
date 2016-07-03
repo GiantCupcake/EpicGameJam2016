@@ -49,8 +49,10 @@ public abstract class PlayerManager : MonoBehaviour
     {
         foreach (UnitControlScript unit in ownedUnits)
         {
-            if (unit.bombTick <= 0 || unit.hp <= 0)
+           if (unit.bombTick <= 0)
+            {
                 mustDie.Add(unit);
+            }
             if (unit.isDetonating)
                 unit.bombTick--;
         }

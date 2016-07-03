@@ -57,6 +57,7 @@ public class Manager : MonoBehaviour {
             {
                 selected = hit.collider.gameObject.GetComponent<UnitControlScript>();
                 writeSelected();
+                HilightTiles(selected.posX,selected.posY,selected.maxMove);
             }
             else
             {
@@ -75,7 +76,6 @@ public class Manager : MonoBehaviour {
             {
                 selected.moveTo(hit.transform.position.x, hit.transform.position.z);
                 writeSelected();
-
             }
         }
 

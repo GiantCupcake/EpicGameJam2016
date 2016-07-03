@@ -37,15 +37,11 @@ public abstract class PlayerManager : MonoBehaviour
         uiPanel.text = playerColor.ToUpper() + " player's turn";
         credits += 10 + researchCredits;
         creditsText.text = "Zucchinis : " + credits;
-        /*        unitList.AddRange(FindObjectsOfType<UnitControlScript>());
-                foreach (UnitControlScript unit in unitList)
-                {
-                    if (unit.owner == playerColor)
-                    {
-                        unit.remainingMoves = unit.maxMove;
-                        ownedUnits.Add(unit);
-                    }
-                }*/
+        foreach (UnitControlScript unit in ownedUnits)
+        {
+            if (unit.owner == playerColor)
+                unit.remainingMoves = unit.maxMove;
+        }
     }
 
 

@@ -30,7 +30,7 @@ public class builderScript : MonoBehaviour {
         GenerateChateaux();
         GenerateBuilding();
         GenerateRock();
-        GenerateGrunt();
+//        GenerateGrunt(); t'es mad piolet ?
 	}
 
     // Update is called once per frame
@@ -99,18 +99,21 @@ public class builderScript : MonoBehaviour {
         Chateau2Location = new Vector3(MapHeight, 0, MapWidth / 2);
 
         listChateau.Add((GameObject)Instantiate(Chateau, new Vector3(0, 0, MapWidth / 2), Quaternion.identity));
+        listChateau[0].GetComponentInChildren<ChateauScript>().owner = "red";
         listChateau.Add((GameObject)Instantiate(Chateau, new Vector3(MapHeight, 0, MapWidth / 2), Quaternion.identity));
+        listChateau[1].GetComponentInChildren<ChateauScript>().owner = "green";
 
     }
 
-    private void GenerateGrunt()
+    /*private void GenerateGrunt()
     {
         GameObject grunt1 = (GameObject)Instantiate(Grunt, Grunt1Location, Quaternion.identity);
         listGrunt.Add(grunt1.GetComponent<UnitControlScript>());
         GameObject grunt2 = (GameObject)Instantiate(Grunt, Grunt2Location, Quaternion.identity);
         listGrunt.Add(grunt1.GetComponent<UnitControlScript>());
-    }
-	
+    } t'es mad poulet ?
+    */
+
 
     //Start
 

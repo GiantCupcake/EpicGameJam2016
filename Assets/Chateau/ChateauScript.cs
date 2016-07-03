@@ -6,6 +6,7 @@ public class ChateauScript : MonoBehaviour {
     int player = 0;
     const int MAX_HEALTH = 100;
     public int HP;
+    public string owner;
 
     public GameObject chato;
 

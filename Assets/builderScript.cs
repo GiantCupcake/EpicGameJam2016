@@ -22,7 +22,7 @@ public class builderScript : MonoBehaviour {
     public Vector3 Grunt2Location;
 
     public List<GameObject> listChateau = new List<GameObject>();
-    public List<GameObject> listGrunt = new List<GameObject>();
+    public List<UnitControlScript> listGrunt = new List<UnitControlScript>();
 
 	// Use this for initialization
 	void Start () {
@@ -105,8 +105,10 @@ public class builderScript : MonoBehaviour {
 
     private void GenerateGrunt()
     {
-        listGrunt.Add((GameObject)Instantiate(Grunt, Grunt1Location, Quaternion.identity));
-        listGrunt.Add((GameObject)Instantiate(Grunt, Grunt2Location, Quaternion.identity));
+        GameObject grunt1 = (GameObject)Instantiate(Grunt, Grunt1Location, Quaternion.identity);
+        listGrunt.Add(grunt1.GetComponent<UnitControlScript>());
+        GameObject grunt2 = (GameObject)Instantiate(Grunt, Grunt2Location, Quaternion.identity);
+        listGrunt.Add(grunt1.GetComponent<UnitControlScript>());
     }
 	
 

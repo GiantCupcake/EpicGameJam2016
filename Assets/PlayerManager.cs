@@ -7,8 +7,8 @@ public class PlayerManager : MonoBehaviour {
     public int credits;
     public int researchCredits;
     public builderScript builder;
-    public List<GameObject> unitList;
-    public List<GameObject> ownedUnits = new List<GameObject>();
+    public List<UnitControlScript> unitList;
+    public List<UnitControlScript> ownedUnits = new List<UnitControlScript>();
 
     //  public GameObjectResearch Research;
 
@@ -30,21 +30,21 @@ public class PlayerManager : MonoBehaviour {
         isActive = true;
         credits += 10 + researchCredits;
         unitList = builder.listGrunt;
-        foreach (GameObject unit in unitList)
+        foreach (UnitControlScript unit in unitList)
         {
-            if (unit.GetComponent<UnitControlScript>().owner == playerColor)
+            if (unit.owner == playerColor)
                 ownedUnits.Add(unit);
         }
     }
 
     void endTurn()
     {
-        foreach (GameObject unit in ownedUnits)
+        foreach (UnitControlScript unit in ownedUnits)
         {
-            if (unit.GetComponent<UnitControlScript>().bombTick <= 0)
-                unit.GetComponent<UnitControlScript>().getWrecked();
-            else if (unit.GetComponent<UnitControlScript>().isDetonating)
-                unit.GetComponent<UnitControlScript>().bombTick--;
+            if (unit.bombTick <= 0)
+                unit.getWrecked();
+            else if (unit.isDetonating)
+                unit.bombTick--;
         }
         ownedUnits.Clear();
         isActive = false;

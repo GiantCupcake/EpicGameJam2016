@@ -2,8 +2,7 @@
 using System.Collections;
 
 public abstract class UnitControlScript : MonoBehaviour {
-    protected ParticleSystem expl;
-    protected AudioSource expl_sound;
+    public GameObject explosionFX;
     public GameObject map;
     public int maxMove;
     public int remainingMoves;
@@ -26,6 +25,10 @@ public abstract class UnitControlScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            TriggerExplosionFX();
+        }
         
     }
 
@@ -77,8 +80,7 @@ public abstract class UnitControlScript : MonoBehaviour {
 
     void TriggerExplosionFX()
     {
-        this.expl_sound.Play();
-        this.expl.Emit(50);
+        Instantiate(explosionFX, this.transform.position, Quaternion.identity);
     }
 
     public void InflictsDmg(int x, int y)

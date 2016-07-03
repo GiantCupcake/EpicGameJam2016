@@ -2,8 +2,7 @@
 using System.Collections;
 using System;
 
-public class GruntScript : UnitControlScript { 
-
+public class GruntScript : UnitControlScript {
     // Use this for initialization
     void Start()
     {
@@ -15,16 +14,6 @@ public class GruntScript : UnitControlScript {
         isDetonating = false;
         posX = (int)transform.position.x;
         posY = (int)transform.position.z;
-        expl = GetComponent<ParticleSystem>();
-        if (expl == null)
-        {
-            Debug.Log("particle null");
-        }
-        expl_sound = GetComponent<AudioSource>();
-        if (expl_sound == null)
-        {
-            Debug.Log("particle null");
-        }
     }
 
     // Update is called once per frame

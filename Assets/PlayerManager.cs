@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine;
 
 public abstract class PlayerManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public abstract class PlayerManager : MonoBehaviour
     public builderScript builder;
     public List<UnitControlScript> unitList;
     public List<UnitControlScript> ownedUnits = new List<UnitControlScript>();
+    public Text uiPanel;
+    public Text creditsText;
 
     //  public GameObjectResearch research;
 
@@ -26,15 +29,20 @@ public abstract class PlayerManager : MonoBehaviour
 
     }
 
-    void startTurn()
+    public void startTurn()
     {
         isActive = true;
+        uiPanel.text = playerColor.ToUpper() + " player's turn";
+        creditsText.text = "Zucchinis : " + credits;
         credits += 10 + researchCredits;
         unitList = builder.listGrunt;
         foreach (UnitControlScript unit in unitList)
         {
             if (unit.owner == playerColor)
+            {
+                unit.remainingMoves = unit.maxMove;
                 ownedUnits.Add(unit);
+            }
         }
     }
 

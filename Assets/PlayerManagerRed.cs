@@ -8,7 +8,7 @@ public class PlayerManagerRed : PlayerManager {
         researchCredits = 0;
         credits = 10;
         playerColor = "red";
-        isActive = true;
+        startTurn();
 	}
 	
 	// Update is called once per frame

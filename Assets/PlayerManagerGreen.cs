@@ -10,6 +10,7 @@ public class PlayerManagerGreen : PlayerManager
         researchCredits = 0;
         credits = 10;
         playerColor = "green";
+        isActive = false;
     }
 
     // Update is called once per frame

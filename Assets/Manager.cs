@@ -115,6 +115,18 @@ public class Manager : MonoBehaviour {
         return (null);
     }
 
+    static public Obstacle MapContrainsObstacle(int x, int y)
+    {
+        foreach(Obstacle obstacle in FindObjectsOfType<Obstacle>())
+        {
+            if((int)obstacle.transform.position.x == x && (int)obstacle.transform.position.z == y)
+            {
+                return obstacle;
+            }
+        }
+        return null;
+    }
+
     public void writeChateau()
     {
         castlePanel.SetActive(true);

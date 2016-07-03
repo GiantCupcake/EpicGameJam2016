@@ -92,7 +92,19 @@ public abstract class UnitControlScript : MonoBehaviour {
                 victim.takeDmg(1 * intox);
             }
         }
+        int[,] RockMap = FindObjectOfType<builderScript>().RockMap;
+        if(RockMap[x,y] == 1)
+        {
+            RockMap[x, y] = 0;
+        }
+        Obstacle rock;
+        if((rock = Manager.MapContrainsObstacle(x,y)) != null)
+        {
+            rock.takeDmg(100);
+        }
     }
+
+
 
     public void takeDmg(int dmg)
     {

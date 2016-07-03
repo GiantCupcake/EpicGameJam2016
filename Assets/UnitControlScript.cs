@@ -2,13 +2,10 @@
 using System.Collections;
 
 public abstract class UnitControlScript : MonoBehaviour {
-<<<<<<< HEAD
+
     protected ParticleSystem expl;
     protected AudioSource expl_sound;
-=======
     public GameObject explosionFX;
-    public GameObject map;
->>>>>>> 34fdd3efb920849a97625f63b257b4c7d2228ec6
     public int maxMove;
     public int remainingMoves;
     public int hp;
@@ -72,11 +69,6 @@ public abstract class UnitControlScript : MonoBehaviour {
     public void getWrecked()
     {
         TriggerExplosionFX();
-<<<<<<< HEAD
-        if (!exploded)
-          this.Assplosion();
-=======
->>>>>>> 34fdd3efb920849a97625f63b257b4c7d2228ec6
         PlayerManager[] players = FindObjectsOfType<PlayerManager>();
         players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
         players[1].ownedUnits.Remove(GetComponent<UnitControlScript>());
@@ -95,12 +87,9 @@ public abstract class UnitControlScript : MonoBehaviour {
 
         if ((victim = Manager.MapContains(x, y)) != null)
         {
-<<<<<<< HEAD
-            victim.hp -= 1 * intox;
-=======
             if (victim != this)
             {
-                victim.takeDmg(dmg * intox);
+                victim.takeDmg(1 * intox);
             }
         }
     }
@@ -109,10 +98,7 @@ public abstract class UnitControlScript : MonoBehaviour {
     {
         hp -= dmg;
         if(hp <= 0)
-        {
             Assplosion();
->>>>>>> 34fdd3efb920849a97625f63b257b4c7d2228ec6
-        }
     }
 
     void bruleTripot(int x, int y)

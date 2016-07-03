@@ -10,6 +10,7 @@ public class GruntScript : UnitControlScript{
         int x;
         int y;
 
+        exploded = true;
         while (dmg > 0)
         {
             y = posY - i;

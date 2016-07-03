@@ -16,6 +16,7 @@ public abstract class UnitControlScript : MonoBehaviour {
     public string owner;
     public int maxX;
     public int maxY;
+    public bool exploded;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +37,8 @@ public abstract class UnitControlScript : MonoBehaviour {
 
     public void getWrecked()
     {
+        if (!exploded)
+            
         PlayerManager[] players = FindObjectsOfType<PlayerManager>();
         players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
         players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());

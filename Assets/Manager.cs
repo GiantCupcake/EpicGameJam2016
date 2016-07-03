@@ -113,4 +113,10 @@ public class Manager : MonoBehaviour {
         if (y > 0)
             CheckPath(power - 1, x, y - 1, radius);
     }
+
+    public void DetonateBtnClick ()
+    {
+        selected.isDetonating = true;
+        print(selected.name + "is detonating set to :" + selected.isDetonating.ToString());
+    }
 }

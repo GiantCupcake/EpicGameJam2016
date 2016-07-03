@@ -95,7 +95,7 @@ public class Manager : MonoBehaviour {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f, layerMaskTiles))
             {
-                selected.moveTo(hit.transform.position.x, hit.transform.position.z);
+                selected.moveTo((int)hit.transform.position.x, (int)hit.transform.position.z);
                 writeSelected();
             }
         }

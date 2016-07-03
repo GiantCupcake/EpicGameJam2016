@@ -56,11 +56,9 @@ public abstract class UnitControlScript : MonoBehaviour {
         getWrecked();
     }
 
-    public virtual void moveTo(float x, float y)
+    public void moveTo(float x, float y)
     {
-        posX = (int)x;
-        posY = (int)y;
-        transform.position = new Vector3(x, 0, y);
+        pathFinder((int)x, (int)y);
     }
 
     public void getWrecked()

@@ -74,7 +74,7 @@ public class Manager : MonoBehaviour {
                     writeSelected();
                     HilightTiles(selected.posX, selected.posY, selected.maxMove);
                 }
-                else if (realSelected.GetComponent<ChateauScript>())
+                else if (realSelected.GetComponent<ChateauScript>() && realSelected.GetComponent<ChateauScript>().owner == activePlayer.playerColor)
                 {
                     chateauSelected = realSelected.GetComponent<ChateauScript>();
                     writeChateau();

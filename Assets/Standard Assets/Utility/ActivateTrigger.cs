@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using System;
 
 namespace UnityStandardAssets.Utility
 {
@@ -91,5 +91,6 @@ namespace UnityStandardAssets.Utility
         {
             DoActivateTrigger();
         }
+
     }
 }

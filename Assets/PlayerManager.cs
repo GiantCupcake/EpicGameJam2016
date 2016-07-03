@@ -9,6 +9,7 @@ public abstract class PlayerManager : MonoBehaviour
     public string playerColor;
     public int credits;
     public int researchCredits;
+    public Manager manager;
     public builderScript builder;
     public List<UnitControlScript> unitList;
     public List<UnitControlScript> ownedUnits = new List<UnitControlScript>();
@@ -32,10 +33,11 @@ public abstract class PlayerManager : MonoBehaviour
     public void startTurn()
     {
         isActive = true;
+        manager.activePlayer = this;
         uiPanel.text = playerColor.ToUpper() + " player's turn";
         creditsText.text = "Zucchinis : " + credits;
         credits += 10 + researchCredits;
-        unitList = builder.listGrunt;
+        unitList.AddRange(FindObjectsOfType<UnitControlScript>());
         foreach (UnitControlScript unit in unitList)
         {
             if (unit.owner == playerColor)

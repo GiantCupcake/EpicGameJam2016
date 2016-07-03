@@ -4,9 +4,11 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour {
 
+    public GameObject Grunt;
     private int layerMaskUnits;
     private int layerMaskTiles;
     private int layerMaskUi;
+    public PlayerManager activePlayer;
     public GameObject realSelected;
     public UnitControlScript selected;
     public ChateauScript chateauSelected;
@@ -19,6 +21,7 @@ public class Manager : MonoBehaviour {
     public GameObject selectedPanel;
     public GameObject detonateButton;
     public GameObject castlePanel;
+    int[] coords = new int[2];
 
 
     // Use this for initialization
@@ -77,8 +80,12 @@ public class Manager : MonoBehaviour {
                     writeChateau();
                 }
             }
+            else if (Physics.Raycast(ray, out hit, 100.0f, layerMaskTiles)) {
+                coords[0] = (int)hit.transform.position.x;
+                coords[1] = (int)hit.transform.position.z;
+            }
             else
-                StartCoroutine(clearSelected());
+                    StartCoroutine(clearSelected());
         }
         if (Input.GetMouseButtonDown(1) && selected != null)
         {
@@ -133,6 +140,21 @@ public class Manager : MonoBehaviour {
     public void DetonateBtnClick ()
     {
         selected.isDetonating = true;
-        print(selected.name + "is detonating set to :" + selected.isDetonating.ToString());
+    }
+
+    IEnumerator<WaitUntil> WaitTilSpawnLoc(GameObject newUnit)
+    {
+        yield return new WaitUntil(() => coords[0] >= 0);
+        GameObject unit = (GameObject)Instantiate(newUnit, new Vector3(coords[0], 0, coords[1]), Quaternion.identity);
+        unit.GetComponent<UnitControlScript>().owner = activePlayer.playerColor;
+        activePlayer.ownedUnits.Add(unit.GetComponent<UnitControlScript>());
+    }
+
+
+    public void spawnGrunt()
+    {
+        coords[0] = -1;
+        coords[1] = -1;
+        StartCoroutine(WaitTilSpawnLoc(Grunt));
     }
 }

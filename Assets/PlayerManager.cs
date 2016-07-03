@@ -35,8 +35,8 @@ public abstract class PlayerManager : MonoBehaviour
         isActive = true;
         manager.activePlayer = this;
         uiPanel.text = playerColor.ToUpper() + " player's turn";
-        creditsText.text = "Zucchinis : " + credits;
         credits += 10 + researchCredits;
+        creditsText.text = "Zucchinis : " + credits;
         unitList.AddRange(FindObjectsOfType<UnitControlScript>());
         foreach (UnitControlScript unit in unitList)
         {
@@ -64,14 +64,8 @@ public abstract class PlayerManager : MonoBehaviour
     public void EndTurnBtnClick()
     {
         if (isActive)
-        {
-            print(this.name + " ended turn");
             endTurn();
-        }
         else
-        {
             startTurn();
-            print(this.name + " starting mine.");
-        }
     }
 }

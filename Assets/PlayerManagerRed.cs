@@ -6,7 +6,7 @@ public class PlayerManagerRed : PlayerManager {
     // Use this for initialization
     void Start () {
         researchCredits = 0;
-        credits = 10;
+        credits = 0;
         playerColor = "red";
         startTurn();
 	}

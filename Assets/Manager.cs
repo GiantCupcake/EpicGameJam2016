@@ -148,6 +148,8 @@ public class Manager : MonoBehaviour {
         GameObject unit = (GameObject)Instantiate(newUnit, new Vector3(coords[0], 0, coords[1]), Quaternion.identity);
         unit.GetComponent<UnitControlScript>().owner = activePlayer.playerColor;
         activePlayer.ownedUnits.Add(unit.GetComponent<UnitControlScript>());
+        activePlayer.credits--;
+        activePlayer.creditsText.text = "Zucchinis : " + activePlayer.credits;
     }
 
 

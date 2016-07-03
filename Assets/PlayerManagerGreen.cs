@@ -8,7 +8,7 @@ public class PlayerManagerGreen : PlayerManager
     void Start()
     {
         researchCredits = 0;
-        credits = 10;
+        credits = 0;
         playerColor = "green";
         isActive = false;
     }

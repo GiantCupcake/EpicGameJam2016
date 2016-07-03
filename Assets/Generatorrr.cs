@@ -7,6 +7,7 @@ public class Generatorrr : MonoBehaviour {
     int startingY;
     public GameObject CubeRause;
     public GameObject CubeBleu;
+    public GameObject Arbre;
 	// Use this for initialization
 
     const float offset = -0.5f;
@@ -37,6 +38,36 @@ public class Generatorrr : MonoBehaviour {
                 colorC++;
             }
             colorC++;
+        }
+    }
+
+    public void GenerateOut(int width, int height)
+    {
+        for (int x=-4*width; x<width*4; x++)
+        {
+            for (int y = -4*height; y < height*4; y++)
+            {
+                Vector3 Loc = new Vector3(x, offset - 0.25f, y);
+                Instantiate(CubeRause, Loc, Quaternion.identity);
+            }
+        }
+    }
+
+    public void GenerateTree(int width, int height, int offset)
+    {
+        for (int x = -offset; x<width+offset; x++)
+        {
+            for (int y= -offset; x<height+offset; x++)
+            {
+                if (x < 0 || x > width)
+                {
+                    if (y < 0 || y > width)
+                    {
+                        Vector3 Loc = new Vector3(x,-0.5f,y);
+                        Instantiate(Arbre, Loc, Quaternion.identity);
+                    }
+                }
+            }
         }
     }
 }

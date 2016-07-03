@@ -120,6 +120,8 @@ public class builderScript : MonoBehaviour {
         GeneratorContent = GameObject.Find("MapGeneratorrrrr");
         mapGen = GeneratorContent.GetComponent<Generatorrr>();
         mapGen.Generate(MapWidth, MapHeight);
+        mapGen.GenerateOut(MapWidth, MapHeight);
+       // mapGen.GenerateTree(MapWidth, MapHeight, 20);
     }
 
 }

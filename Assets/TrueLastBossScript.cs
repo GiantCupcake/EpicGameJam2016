@@ -4,7 +4,7 @@ using System;
 
 public class TrueLastBossScript : UnitControlScript {
 	
-	public override void dealDmg()
+	public override void Assplosion()
 	{
 	}
 	

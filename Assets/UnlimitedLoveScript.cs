@@ -4,7 +4,7 @@ using System;
 
 public class UnlimitedLoveScript : UnitControlScript {
 	
-	public override void dealDmg()
+	public override void Assplosion()
 	{
 		throw new NotImplementedException();
 	}

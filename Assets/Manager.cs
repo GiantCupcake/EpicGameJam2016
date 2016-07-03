@@ -103,6 +103,16 @@ public class Manager : MonoBehaviour {
 
     }
 
+    static public UnitControlScript MapContains(int x, int y)
+    {
+        foreach (UnitControlScript unit in FindObjectsOfType<UnitControlScript>())
+        {
+            if (unit.posX == x && unit.posY == y)
+                return (unit);
+        }
+        return (null);
+    }
+
     public void writeChateau()
     {
         castlePanel.SetActive(true);

@@ -3,6 +3,7 @@ using System.Collections;
 
 public abstract class UnitControlScript : MonoBehaviour {
 
+    public GameObject map;
     public int maxMove;
     public int remainingMoves;
     public int hp;
@@ -34,7 +35,15 @@ public abstract class UnitControlScript : MonoBehaviour {
     }
 
     public abstract void getWrecked();
-    public abstract void dealDmg();
+    public abstract void Assplosion();
+
+    public void InflictsDmg(int x, int y)
+    {
+        UnitControlScript victim;
+
+        if ((victim = Manager.MapContains(x, y)) != null)
+            victim.hp -= 1 * intox;
+    }
 
     void bruleTripot(int x, int y)
     {

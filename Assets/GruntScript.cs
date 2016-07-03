@@ -4,13 +4,37 @@ using System;
 
 public class GruntScript : UnitControlScript{
 
-    public override void dealDmg()
+    public override void Assplosion()
     {
+        int i = 1;
+        int x;
+        int y;
 
+        while (dmg > 0)
+        {
+            y = posY - i;
+            while (y - 1 < posY + i)
+            {
+                x = posX - i;
+                while (x - 1 < posX + i)
+                {
+                    print("x : " + x + " ---- y : " + y);
+                    InflictsDmg(x, y);
+                    x++;
+                }
+                y++;
+            }
+            i++;
+            dmg--;
+        }
+        getWrecked();
     }
 
     public override void getWrecked()
     {
+        PlayerManager[] players = FindObjectsOfType<PlayerManager>();
+        players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
+        players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
         Destroy(this.gameObject);
     }
 

@@ -4,7 +4,7 @@ using System;
 
 public class KatyushaScript : UnitControlScript {
 	
-	public override void dealDmg()
+	public override void Assplosion()
 	{
 		throw new NotImplementedException();
 	}

@@ -2,7 +2,8 @@
 using System.Collections;
 
 public abstract class UnitControlScript : MonoBehaviour {
-
+    protected ParticleSystem expl;
+    protected AudioSource expl_sound;
     public GameObject map;
     public int maxMove;
     public int remainingMoves;
@@ -37,14 +38,22 @@ public abstract class UnitControlScript : MonoBehaviour {
 
     public void getWrecked()
     {
+        TriggerExplosionFX();
         if (!exploded)
-            
+            this.Assplosion();
         PlayerManager[] players = FindObjectsOfType<PlayerManager>();
         players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
         players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
         Destroy(this.gameObject);
     }
     public abstract void Assplosion();
+
+
+    void TriggerExplosionFX()
+    {
+        this.expl_sound.Play();
+        this.expl.Emit(50);
+    }
 
     public void InflictsDmg(int x, int y)
     {

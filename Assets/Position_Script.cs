@@ -19,14 +19,11 @@ public class Position_Script : MonoBehaviour {
     void Update()
     {
         CameraControl();
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            StartCoroutine(GoToLocation(new Vector3(0,this.transform.position.y,0)));
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StartCoroutine(GoToLocation(new Vector3(50, this.transform.position.y, 50)));
-        }
+    }
+
+    void LookAt(Vector3 target)
+    {
+        StartCoroutine(GoToLocation(target));
     }
     void CameraControl()
     {

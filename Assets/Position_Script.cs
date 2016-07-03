@@ -4,8 +4,8 @@ using System.Collections;
 public class Position_Script : MonoBehaviour {
     public float cameraSpeed;
     float zoomLevel = 1;
-    float maxZoomLevel = 7;
-    float zoomSpeed = 5f;
+    float maxZoomLevel = 8;
+    float zoomSpeed = 2f;
 
     float transitionDuration = 1.0f;
 

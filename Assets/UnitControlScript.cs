@@ -97,7 +97,14 @@ public abstract class UnitControlScript : MonoBehaviour {
         {
             RockMap[x, y] = 0;
         }
+        Obstacle rock;
+        if((rock = Manager.MapContrainsObstacle(x,y)) != null)
+        {
+            rock.takeDmg(100);
+        }
     }
+
+
 
     public void takeDmg(int dmg)
     {

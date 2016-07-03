@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ChateauScript : MonoBehaviour {
 
     int player = 0;
     const int MAX_HEALTH = 100;
-    public int HP;
+    public int hp;
     public string owner;
-
+    public GameObject panel; 
     public GameObject chato;
 
 	// Use this for initialization
 	void Start () {
-        HP = MAX_HEALTH;
+        hp = MAX_HEALTH;
 	}
 	
 	// Update is called once per frame
@@ -25,12 +26,13 @@ public class ChateauScript : MonoBehaviour {
 
     public void takeDmg(int dmg)
     {
-        //Baisse les HP
-        HP -= dmg;
 
-        if(HP <= 0)
+        //Baisse les HP
+        hp -= dmg;
+
+        if(hp <= 0)
         {
-            //Call fin du jeu
+            
         }
     }
 

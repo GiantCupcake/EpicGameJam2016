@@ -23,6 +23,7 @@ public class builderScript : MonoBehaviour {
 
     public List<GameObject> listChateau = new List<GameObject>();
     public List<UnitControlScript> listGrunt = new List<UnitControlScript>();
+    public 
 
 	// Use this for initialization
 	void Start () {

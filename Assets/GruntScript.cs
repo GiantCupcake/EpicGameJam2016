@@ -30,14 +30,6 @@ public class GruntScript : UnitControlScript{
         getWrecked();
     }
 
-    public override void getWrecked()
-    {
-        PlayerManager[] players = FindObjectsOfType<PlayerManager>();
-        players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
-        players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
-        Destroy(this.gameObject);
-    }
-
     public override void moveTo(float x, float y)
     {
         pathFinder((int)x, (int)y);

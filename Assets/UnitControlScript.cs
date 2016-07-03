@@ -34,7 +34,13 @@ public abstract class UnitControlScript : MonoBehaviour {
         transform.position = new Vector3(x, 0, y);
     }
 
-    public abstract void getWrecked();
+    public void getWrecked()
+    {
+        PlayerManager[] players = FindObjectsOfType<PlayerManager>();
+        players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
+        players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
+        Destroy(this.gameObject);
+    }
     public abstract void Assplosion();
 
     public void InflictsDmg(int x, int y)

@@ -55,9 +55,9 @@ public abstract class PlayerManager : MonoBehaviour
 
         while (someoneDies)
         {
+            someoneDies = false;
             foreach (UnitControlScript unit in ownedUnits)
             {
-                someoneDies = false;
                 if (unit.bombTick <= 0 || unit.hp <= 0)
                 {
                     mustDie.Add(unit);

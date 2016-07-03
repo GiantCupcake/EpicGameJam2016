@@ -63,7 +63,7 @@ public class builderScript : MonoBehaviour {
         }
         for (int x = 0; x < 4; x++)
         {
-            for (int y = 0; y < MapHeight / 2 - 5; y++)
+            for (int y = 0; y < MapHeight / 2 - 4; y++)
             {
                 if (Random.Range(0, 1000) < RockDensity)
                 {
@@ -71,7 +71,7 @@ public class builderScript : MonoBehaviour {
                     RockMap[(MapWidth - x) - 1, (MapHeight - y) - 1] = 1;
                 }
             }
-            for (int y = (MapHeight / 2) + 5; y < MapHeight; y++)
+            for (int y = MapHeight / 2 + 4; y < MapHeight; y++)
             {
                 if (Random.Range(0, 1000) < RockDensity)
                 {

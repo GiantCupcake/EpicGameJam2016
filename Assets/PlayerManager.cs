@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour {
     public int researchCredits;
     public builderScript builder;
     public List<GameObject> unitList;
+    public List<GameObject> ownedUnits = new List<GameObject>();
 
     //  public GameObjectResearch Research;
 
@@ -16,6 +17,7 @@ public class PlayerManager : MonoBehaviour {
     void Start () {
         researchCredits = 0;
         credits = 10;
+        playerColor = "red";
 	}
 	
 	// Update is called once per frame
@@ -28,11 +30,23 @@ public class PlayerManager : MonoBehaviour {
         isActive = true;
         credits += 10 + researchCredits;
         unitList = builder.listGrunt;
-        
+        foreach (GameObject unit in unitList)
+        {
+            if (unit.GetComponent<UnitControlScript>().owner == playerColor)
+                ownedUnits.Add(unit);
+        }
     }
+
     void endTurn()
     {
-        //TO DO : check all owned units who are detonating and detonates those who need and decrement one from ticking
+        foreach (GameObject unit in ownedUnits)
+        {
+            if (unit.GetComponent<UnitControlScript>().bombTick <= 0)
+                unit.GetComponent<UnitControlScript>().getWrecked();
+            else if (unit.GetComponent<UnitControlScript>().isDetonating)
+                unit.GetComponent<UnitControlScript>().bombTick--;
+        }
+        ownedUnits.Clear();
         isActive = false;
     }
 }

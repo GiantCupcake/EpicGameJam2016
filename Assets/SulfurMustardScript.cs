@@ -3,17 +3,7 @@ using System.Collections;
 using System;
 
 public class SulfurMustardScript : UnitControlScript {
-	
-	public override void Assplosion()
-	{
-		throw new NotImplementedException();
-	}
 
-	public override void moveTo(float x, float y)
-	{
-		pathFinder((int)x, (int)y);
-	}
-	
 	// Use this for initialization
 	void Start () {
 		dmg = 5;
@@ -29,31 +19,5 @@ public class SulfurMustardScript : UnitControlScript {
 	// Update is called once per frame
 	void Update () {
 		
-	}
-	
-	
-	// A FAIRE : VERIFIER QUE LA CASE SOIT LIBRE UNE FOIS QUE NOTRE MAP ARRETE D'ETRE AUTISTE SVP MERCI
-	void pathFinder(int destX, int destY)
-	{
-		while (posX > destX)
-		{
-			if (!MoveLeft())
-				break;
-		}
-		while (posX < destX)
-		{
-			if (!MoveRight())
-				break;
-		}
-		while (posY < destY)
-		{
-			if (!MoveDown())
-				break;
-		}
-		while (posY > destY)
-		{
-			if (!MoveUp())
-				break;
-		}
 	}
 }

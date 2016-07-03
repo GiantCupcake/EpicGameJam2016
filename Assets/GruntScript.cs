@@ -28,18 +28,10 @@ public class GruntScript : UnitControlScript {
     }
 
     // Update is called once per frame
-<<<<<<< HEAD
-    void Update()
-=======
     void Update () {
 
 	}
 
 
     // A FAIRE : VERIFIER QUE LA CASE SOIT LIBRE UNE FOIS QUE NOTRE MAP ARRETE D'ETRE AUTISTE SVP MERCI
-    void pathFinder(int destX, int destY)
->>>>>>> 5007c16f5cd693aa11cf3f786154f8618a8a4a6a
-    {
-
-    }
 }

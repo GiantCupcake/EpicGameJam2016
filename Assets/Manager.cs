@@ -6,6 +6,7 @@ public class Manager : MonoBehaviour {
 
     private int layerMaskUnits;
     private int layerMaskTiles;
+    private int layerMaskUi;
     public UnitControlScript selected;
     public Text textUnitName;
     public Text textUnitHp;
@@ -24,8 +25,7 @@ public class Manager : MonoBehaviour {
         layerMaskTiles = 1 << 9;
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 	
 	}
 
@@ -41,12 +41,14 @@ public class Manager : MonoBehaviour {
         textUnitIntox.text = "Intoxication : " + selected.intox.ToString();
     }
 
-    void clearSelected()
+    IEnumerator<WaitForSeconds> clearSelected()
     {
+        yield return new WaitForSeconds(0.5f);
         detonateButton.SetActive(false);
         selectedPanel.SetActive(false);
+        selected = null;
     }
-    void FixedUpdate()
+    void Update()
     {
         RaycastHit hit;
         Ray ray;
@@ -57,17 +59,10 @@ public class Manager : MonoBehaviour {
             {
                 selected = hit.collider.gameObject.GetComponent<UnitControlScript>();
                 writeSelected();
-                HilightTiles(selected.posX,selected.posY,selected.maxMove);
+                HilightTiles(selected.posX, selected.posY, selected.maxMove);
             }
             else
-            {
-                selected = null;
-                clearSelected();
-            }
-        }
-        if (selected != null)
-        {
-
+                StartCoroutine(clearSelected());
         }
         if (Input.GetMouseButtonDown(1) && selected != null)
         {

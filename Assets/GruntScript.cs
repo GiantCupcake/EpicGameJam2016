@@ -2,11 +2,11 @@
 using System.Collections;
 using System;
 
-public class GruntScript : UnitControlScript {
+public class GruntScript : UnitControlScript{
 
     public override void dealDmg()
     {
-        throw new NotImplementedException();
+
     }
 
     public override void getWrecked()
@@ -20,7 +20,8 @@ public class GruntScript : UnitControlScript {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         dmg = 1;
         hp = 1;
         maxMove = 3;
@@ -29,11 +30,10 @@ public class GruntScript : UnitControlScript {
         isDetonating = false;
         posX = (int)transform.position.x;
         posY = (int)transform.position.z;
-
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 	
 	}
 

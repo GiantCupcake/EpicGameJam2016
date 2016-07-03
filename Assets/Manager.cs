@@ -57,6 +57,7 @@ public class Manager : MonoBehaviour {
         chateauSelected = null;
         selected = null;
     }
+
     void Update()
     {
         RaycastHit hit;
@@ -67,8 +68,7 @@ public class Manager : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, 100.0f, layerMaskUnits))
             {
                 realSelected = hit.collider.gameObject;
-                //.GetComponent<UnitControlScript>();
-                if (realSelected.GetComponent<UnitControlScript>())
+                if (realSelected.GetComponent<UnitControlScript>() && realSelected.GetComponent<UnitControlScript>().owner == activePlayer.playerColor)
                 {
                     selected = realSelected.GetComponent<UnitControlScript>();
                     writeSelected();
@@ -79,13 +79,16 @@ public class Manager : MonoBehaviour {
                     chateauSelected = realSelected.GetComponent<ChateauScript>();
                     writeChateau();
                 }
+                else
+                    StartCoroutine(clearSelected());
             }
             else if (Physics.Raycast(ray, out hit, 100.0f, layerMaskTiles)) {
                 coords[0] = (int)hit.transform.position.x;
                 coords[1] = (int)hit.transform.position.z;
+                StartCoroutine(clearSelected());
             }
             else
-                    StartCoroutine(clearSelected());
+                StartCoroutine(clearSelected());
         }
         if (Input.GetMouseButtonDown(1) && selected != null)
         {

@@ -10,9 +10,11 @@ public class ResetScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	if (Input.GetKeyDown(KeyCode.R))
+
+	}
+
+    void Reset()
     {
         Application.LoadLevel(0);
     }
-	}
 }

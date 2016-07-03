@@ -4,6 +4,9 @@ using System;
 
 public class GruntScript : UnitControlScript{
 
+    ParticleSystem expl;
+    GameObject expl_cont;
+    AudioSource expl_sound;
     public override void Assplosion()
     {
         int i = 1;
@@ -27,7 +30,14 @@ public class GruntScript : UnitControlScript{
             i++;
             dmg--;
         }
+   //     TriggerExplosionFX();
         getWrecked();
+    }
+
+    void TriggerExplosionFX()
+    {
+        this.expl_sound.Play();
+        this.expl.Emit(50);
     }
 
     public override void moveTo(float x, float y)
@@ -46,11 +56,17 @@ public class GruntScript : UnitControlScript{
         isDetonating = false;
         posX = (int)transform.position.x;
         posY = (int)transform.position.z;
+        expl_cont = GameObject.Find("explosion_emt");
+        expl = expl_cont.GetComponent<ParticleSystem>();
+        expl_sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update () {
-	
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            TriggerExplosionFX();
+        }
 	}
 
 

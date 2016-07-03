@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManagerRed : MonoBehaviour {
     public bool isActive;
     public string playerColor;
     public int credits;

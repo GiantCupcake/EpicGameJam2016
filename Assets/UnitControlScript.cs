@@ -2,9 +2,10 @@
 using System.Collections;
 
 public abstract class UnitControlScript : MonoBehaviour {
+
     protected ParticleSystem expl;
     protected AudioSource expl_sound;
-    public GameObject map;
+    public GameObject explosionFX;
     public int maxMove;
     public int remainingMoves;
     public int hp;
@@ -26,7 +27,6 @@ public abstract class UnitControlScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
     }
 
     public void Assplosion()
@@ -35,48 +35,50 @@ public abstract class UnitControlScript : MonoBehaviour {
         int x;
         int y;
 
-        exploded = true;
-        while (dmg > 0)
+        if (!exploded)
         {
-            y = posY - i;
-            while (y - 1 < posY + i)
+            exploded = true;
+            while (dmg > 0)
             {
-                x = posX - i;
-                while (x - 1 < posX + i)
+                y = posY - i;
+                while (y - 1 < posY + i)
                 {
-                    print("x : " + x + " ---- y : " + y);
-                    InflictsDmg(x, y);
-                    x++;
+                    x = posX - i;
+                    while (x - 1 < posX + i)
+                    {
+                        print("x : " + x + " ---- y : " + y);
+                        InflictsDmg(x, y);
+                        x++;
+                    }
+                    y++;
                 }
-                y++;
+                i++;
+                dmg--;
             }
-            i++;
-            dmg--;
         }
         getWrecked();
     }
 
     public void moveTo(float x, float y)
     {
+        FindObjectOfType<Manager>().ShutdownTiles();
         pathFinder((int)x, (int)y);
+        FindObjectOfType<Manager>().HilightTiles(posX, posY, remainingMoves + 1);
     }
 
     public void getWrecked()
     {
         TriggerExplosionFX();
-        if (!exploded)
-            this.Assplosion();
         PlayerManager[] players = FindObjectsOfType<PlayerManager>();
         players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
-        players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
+        players[1].ownedUnits.Remove(GetComponent<UnitControlScript>());
         Destroy(this.gameObject);
     }
 
 
     void TriggerExplosionFX()
     {
-        this.expl_sound.Play();
-        this.expl.Emit(50);
+        Instantiate(explosionFX, this.transform.position, Quaternion.identity);
     }
 
     public void InflictsDmg(int x, int y)
@@ -85,10 +87,18 @@ public abstract class UnitControlScript : MonoBehaviour {
 
         if ((victim = Manager.MapContains(x, y)) != null)
         {
-            victim.hp -= 1 * intox;
-            if (victim.hp <= 0)
-                victim.Assplosion();
+            if (victim != this)
+            {
+                victim.takeDmg(1 * intox);
+            }
         }
+    }
+
+    public void takeDmg(int dmg)
+    {
+        hp -= dmg;
+        if(hp <= 0)
+            Assplosion();
     }
 
     void bruleTripot(int x, int y)

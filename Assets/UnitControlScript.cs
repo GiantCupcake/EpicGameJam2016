@@ -29,6 +29,33 @@ public abstract class UnitControlScript : MonoBehaviour {
         
     }
 
+    public void Assplosion()
+    {
+        int i = 1;
+        int x;
+        int y;
+
+        exploded = true;
+        while (dmg > 0)
+        {
+            y = posY - i;
+            while (y - 1 < posY + i)
+            {
+                x = posX - i;
+                while (x - 1 < posX + i)
+                {
+                    print("x : " + x + " ---- y : " + y);
+                    InflictsDmg(x, y);
+                    x++;
+                }
+                y++;
+            }
+            i++;
+            dmg--;
+        }
+        getWrecked();
+    }
+
     public virtual void moveTo(float x, float y)
     {
         posX = (int)x;
@@ -46,7 +73,6 @@ public abstract class UnitControlScript : MonoBehaviour {
         players[0].ownedUnits.Remove(GetComponent<UnitControlScript>());
         Destroy(this.gameObject);
     }
-    public abstract void Assplosion();
 
 
     void TriggerExplosionFX()
@@ -60,7 +86,11 @@ public abstract class UnitControlScript : MonoBehaviour {
         UnitControlScript victim;
 
         if ((victim = Manager.MapContains(x, y)) != null)
+        {
             victim.hp -= 1 * intox;
+            if (victim.hp <= 0)
+                victim.Assplosion();
+        }
     }
 
     void bruleTripot(int x, int y)
@@ -118,5 +148,29 @@ public abstract class UnitControlScript : MonoBehaviour {
         }
         else
             return false;
+    }
+    // A FAIRE : VERIFIER QUE LA CASE SOIT LIBRE UNE FOIS QUE NOTRE MAP ARRETE D'ETRE AUTISTE SVP MERCI
+    void pathFinder(int destX, int destY)
+    {
+        while (posX > destX)
+        {
+            if (!MoveLeft())
+                break;
+        }
+        while (posX < destX)
+        {
+            if (!MoveRight())
+                break;
+        }
+        while (posY < destY)
+        {
+            if (!MoveDown())
+                break;
+        }
+        while (posY > destY)
+        {
+            if (!MoveUp())
+                break;
+        }
     }
 }

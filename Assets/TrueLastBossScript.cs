@@ -6,7 +6,6 @@ public class TrueLastBossScript : UnitControlScript {
 	
 	public override void dealDmg()
 	{
-		throw new NotImplementedException();
 	}
 	
 	public override void getWrecked()

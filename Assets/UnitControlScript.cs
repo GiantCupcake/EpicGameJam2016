@@ -3,7 +3,6 @@ using System.Collections;
 
 public abstract class UnitControlScript : MonoBehaviour {
 
-    public GameObject builder;
     public int maxMove;
     public int remainingMoves;
     public int hp;

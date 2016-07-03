@@ -2,11 +2,11 @@
 using System.Collections;
 using System;
 
-public class GruntScript : UnitControlScript {
+public class GruntScript : UnitControlScript{
 
     public override void dealDmg()
     {
-        throw new NotImplementedException();
+
     }
 
     public override void getWrecked()
@@ -22,9 +22,6 @@ public class GruntScript : UnitControlScript {
     // Use this for initialization
     void Start()
     {
-        print(builder.ToString());
-//        maxX = builder.MapWidth;
-//        maxY = builder.MapHeight;
         dmg = 1;
         hp = 1;
         maxMove = 3;

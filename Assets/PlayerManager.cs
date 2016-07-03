@@ -51,20 +51,29 @@ public abstract class PlayerManager : MonoBehaviour
 
     public void endTurn()
     {
-        foreach (UnitControlScript unit in ownedUnits)
+        bool someoneDies = true;
+
+        while (someoneDies)
         {
-            if (unit.bombTick <= 0)
-                mustDie.Add(unit);
-            else if (unit.isDetonating)
-                unit.bombTick--;
+            foreach (UnitControlScript unit in ownedUnits)
+            {
+                someoneDies = false;
+                if (unit.bombTick <= 0 || unit.hp <= 0)
+                {
+                    mustDie.Add(unit);
+                    someoneDies = true;
+                }
+                if (unit.isDetonating)
+                    unit.bombTick--;
+            }
+            //        ownedUnits.Clear();
+            foreach (UnitControlScript unit in mustDie)
+            {
+                ownedUnits.Remove(unit);
+                unit.Assplosion();
+            }
+            mustDie.Clear();
         }
-        //        ownedUnits.Clear();
-        foreach (UnitControlScript unit in mustDie)
-        {
-            ownedUnits.Remove(unit);
-            unit.Assplosion();
-        }
-        mustDie.Clear();
         isActive = false;
     }
 

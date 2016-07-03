@@ -81,8 +81,6 @@ public class builderScript : MonoBehaviour {
             }
         }
 
-
-
         for (int x = 0; x < MapWidth; x++)
         {
             for (int y = 0; y < MapHeight; y++)

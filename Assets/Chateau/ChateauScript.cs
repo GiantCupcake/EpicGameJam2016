@@ -8,7 +8,8 @@ public class ChateauScript : MonoBehaviour {
     const int MAX_HEALTH = 100;
     public int hp;
     public string owner;
-    public GameObject panel; 
+    public GameObject panel;
+    public Text[] victory;
     public GameObject chato;
 
 	// Use this for initialization
@@ -18,7 +19,7 @@ public class ChateauScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+        takeDmg(0);
 	}
 
     public int GetPlayer() { return player; }
@@ -32,7 +33,19 @@ public class ChateauScript : MonoBehaviour {
 
         if(hp <= 0)
         {
-            
+            victory = FindObjectsOfType<Text>();
+            string winner;
+            if (owner == "red")
+                winner = "green";
+            else
+                winner = "red";
+            foreach(Text derp in victory) {
+                if (derp.name == "Victory Text")
+                {
+                    derp.text = "Shame on you " + owner + "s ! You let the filthy " + winner + "s destroy your castle !";
+                    derp.GetComponent<Text>().enabled = true;
+                }
+            }
         }
     }
 

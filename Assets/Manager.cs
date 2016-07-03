@@ -13,6 +13,8 @@ public class Manager : MonoBehaviour {
     public GameObject realSelected;
     public UnitControlScript selected;
     public ChateauScript chateauSelected;
+    public ChateauScript chateauRed;
+    public ChateauScript chateauGreen;
     public Text textUnitName;
     public Text textUnitHp;
     public Text textUnitMove;
@@ -22,6 +24,8 @@ public class Manager : MonoBehaviour {
     public GameObject selectedPanel;
     public GameObject detonateButton;
     public GameObject castlePanel;
+    public GameObject redCastleLifePanel;
+    public GameObject greenCastleLifePanel;
     int[] coords = new int[2];
     List<Object> lights = new List<Object>();
 
@@ -30,11 +34,22 @@ public class Manager : MonoBehaviour {
         selected = null;
         layerMaskUnits = 1 << 8;
         layerMaskTiles = 1 << 9;
+        foreach (ChateauScript chateau in FindObjectsOfType<ChateauScript>())
+        {
+            if (chateau.owner == "red")
+                chateauRed = chateau;
+            else
+                chateauGreen = chateau;
+        }
 	}
-	
-	void FixedUpdate () {
-	
-	}
+
+    void FixedUpdate()
+    {
+        redCastleLifePanel.GetComponentInChildren<Text>().text = chateauRed.hp + "/100";
+//        redCastleLifePanel.transform.localScale = new Vector3(0.0f, (float)chateauRed.hp / 100, 0.0f);
+        greenCastleLifePanel.GetComponent<Text>().text = chateauGreen.hp + "/100";
+//        greenCastleLifePanel.transform.localScale = new Vector3(0.0f, (float)chateauGreen.hp / 100, 0.0f);
+    }
 
     void writeSelected()
     {

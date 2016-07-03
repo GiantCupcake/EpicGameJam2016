@@ -127,6 +127,18 @@ public class Manager : MonoBehaviour {
         return null;
     }
 
+    static public ChateauScript MapContainsChateau(int x, int y)
+    {
+        foreach (ChateauScript chateau in FindObjectsOfType<ChateauScript>())
+        {
+            if ((int)chateau.transform.position.x == x && (int)chateau.transform.position.z == y)
+            {
+                return chateau;
+            }
+        }
+        return null;
+    }
+
     public void writeChateau()
     {
         castlePanel.SetActive(true);

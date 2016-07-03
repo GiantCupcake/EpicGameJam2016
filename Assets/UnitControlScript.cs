@@ -102,6 +102,11 @@ public abstract class UnitControlScript : MonoBehaviour {
         {
             rock.takeDmg(100);
         }
+        ChateauScript chateau;
+        if ((chateau = Manager.MapContainsChateau(x, y)) != null)
+        {
+            chateau.takeDmg(100);
+        }
     }
 
 

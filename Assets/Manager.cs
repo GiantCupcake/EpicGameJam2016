@@ -97,15 +97,20 @@ public class Manager : MonoBehaviour {
 
     public void CheckPath(int power, int x, int y, HashSet<Vector2> radius)
     {
-        int[,] RockMap = GetComponent<builderScript>().RockMap;
+        int[,] RockMap = FindObjectOfType<builderScript>().RockMap;
+
         if (RockMap[x, y] == 1 || power == 0)
             return;
 
         radius.Add(new Vector2(x, y));
-        
-        CheckPath(power - 1, x + 1, y, radius);
-        CheckPath(power - 1, x - 1, y, radius);
-        CheckPath(power - 1, x, y + 1, radius);
-        CheckPath(power - 1, x, y - 1, radius);
+        //TODO : executer ca si on sort pas de la map ----- Matt : j'ai fait mais je sais pas si c'est juste, je comprends pas trop le delire de la func
+        if (x < FindObjectOfType<builderScript>().MapWidth)
+            CheckPath(power - 1, x + 1, y, radius);
+        if (x > 0)
+            CheckPath(power - 1, x - 1, y, radius);
+        if (y < FindObjectOfType<builderScript>().MapHeight)
+            CheckPath(power - 1, x, y + 1, radius);
+        if (y > 0)
+            CheckPath(power - 1, x, y - 1, radius);
     }
 }

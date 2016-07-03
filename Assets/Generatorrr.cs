@@ -43,9 +43,9 @@ public class Generatorrr : MonoBehaviour {
 
     public void GenerateOut(int width, int height)
     {
-        for (int x=-4*width; x<width*4; x++)
+        for (int x=-5*width; x<width*5; x++)
         {
-            for (int y = -4*height; y < height*4; y++)
+            for (int y = -5*height; y < height*5; y++)
             {
                 Vector3 Loc = new Vector3(x, offset - 0.25f, y);
                 Instantiate(CubeRause, Loc, Quaternion.identity);

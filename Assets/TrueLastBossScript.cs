@@ -7,12 +7,7 @@ public class TrueLastBossScript : UnitControlScript {
 	public override void Assplosion()
 	{
 	}
-	
-	public override void getWrecked()
-	{
-		Destroy(this.gameObject);
-	}
-	
+
 	public override void moveTo(float x, float y)
 	{
 		pathFinder((int)x, (int)y);

@@ -9,11 +9,6 @@ public class UnlimitedLoveScript : UnitControlScript {
 		throw new NotImplementedException();
 	}
 	
-	public override void getWrecked()
-	{
-		Destroy(this.gameObject);
-	}
-	
 	public override void moveTo(float x, float y)
 	{
 		pathFinder((int)x, (int)y);

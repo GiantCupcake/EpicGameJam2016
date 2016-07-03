@@ -11,8 +11,6 @@ public class Obstacle : MonoBehaviour {
     // Update is called once per frame
     public void Update ()
     {
-        if (hp <= 0)
-            Destroy(gameObject);
 	}
 
     public void GenerateHP()
@@ -21,5 +19,12 @@ public class Obstacle : MonoBehaviour {
         hp = Random.Range(1, 5);
             RockHeight = hp * 0.28f;
         transform.localScale = new Vector3(transform.localScale.x, RockHeight, transform.localScale.z);
+    }
+
+    public void takeDmg(int dmg)
+    {
+        hp -= dmg;
+        if (hp <= 0)
+            Destroy(gameObject);
     }
 }

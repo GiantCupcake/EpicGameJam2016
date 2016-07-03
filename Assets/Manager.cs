@@ -130,6 +130,30 @@ public class Manager : MonoBehaviour {
         return (null);
     }
 
+    static public Obstacle MapContrainsObstacle(int x, int y)
+    {
+        foreach(Obstacle obstacle in FindObjectsOfType<Obstacle>())
+        {
+            if((int)obstacle.transform.position.x == x && (int)obstacle.transform.position.z == y)
+            {
+                return obstacle;
+            }
+        }
+        return null;
+    }
+
+    static public ChateauScript MapContainsChateau(int x, int y)
+    {
+        foreach (ChateauScript chateau in FindObjectsOfType<ChateauScript>())
+        {
+            if ((int)chateau.transform.position.x == x && (int)chateau.transform.position.z == y)
+            {
+                return chateau;
+            }
+        }
+        return null;
+    }
+
     public void writeChateau()
     {
         castlePanel.SetActive(true);
@@ -166,13 +190,13 @@ public class Manager : MonoBehaviour {
 
         radius.Add(new Vector2(x, y));
         //TODO : executer ca si on sort pas de la map ----- Matt : j'ai fait mais je sais pas si c'est juste, je comprends pas trop le delire de la func ... CA MARCHE YO PS: vous etes cons
-        if (x < FindObjectOfType<builderScript>().MapWidth - 1)
+        if (x < FindObjectOfType<builderScript>().MapWidth - 1 && !radius.Contains(new Vector2(x+1,y)))
             CheckPath(power - 1, x + 1, y, radius);
-        if (x > 0)
+        if (x > 0 && !radius.Contains(new Vector2(x - 1, y)))
             CheckPath(power - 1, x - 1, y, radius);
-        if (y < FindObjectOfType<builderScript>().MapHeight - 1)
+        if (y < FindObjectOfType<builderScript>().MapHeight - 1 && !radius.Contains(new Vector2(x, y+1)))
             CheckPath(power - 1, x, y + 1, radius);
-        if (y > 0)
+        if (y > 0 && !radius.Contains(new Vector2(x, y-1)))
             CheckPath(power - 1, x, y - 1, radius);
     }
 

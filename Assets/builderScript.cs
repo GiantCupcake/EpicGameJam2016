@@ -23,6 +23,7 @@ public class builderScript : MonoBehaviour {
 
     public List<GameObject> listChateau = new List<GameObject>();
     public List<UnitControlScript> listGrunt = new List<UnitControlScript>();
+    public 
 
 	// Use this for initialization
 	void Start () {
@@ -119,6 +120,8 @@ public class builderScript : MonoBehaviour {
         GeneratorContent = GameObject.Find("MapGeneratorrrrr");
         mapGen = GeneratorContent.GetComponent<Generatorrr>();
         mapGen.Generate(MapWidth, MapHeight);
+        mapGen.GenerateOut(MapWidth, MapHeight);
+       // mapGen.GenerateTree(MapWidth, MapHeight, 20);
     }
 
 }
